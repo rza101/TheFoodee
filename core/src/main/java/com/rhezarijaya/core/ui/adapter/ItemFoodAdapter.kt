@@ -12,7 +12,10 @@ import com.rhezarijaya.core.databinding.ItemFoodBinding
 import com.rhezarijaya.core.domain.model.Food
 import com.rhezarijaya.core.ui.OnItemClick
 
-class ItemFoodAdapter(private val onItemClick: OnItemClick<Food>, private val onFavoriteClick: OnItemClick<Food>) :
+class ItemFoodAdapter(
+    private val onItemClick: OnItemClick<Food>,
+    private val onFavoriteClick: OnItemClick<Food>
+) :
     ListAdapter<Food, ItemFoodAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

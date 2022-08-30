@@ -1,7 +1,7 @@
 package com.rhezarijaya.thefoodee.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.rhezarijaya.thefoodee.R

@@ -32,7 +32,7 @@
         <activity
             android:name=".ui.category.CategoryActivity"
             android:exported="false"
-            android:theme="@style/Theme.TheFoodee"/>
+            android:theme="@style/Theme.TheFoodee" />
         <activity
             android:name=".ui.detail.DetailActivity"
             android:exported="false"

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Food (
+data class Food(
     val idMeal: String,
     val strMeal: String,
     val strDrinkAlternate: String? = null,

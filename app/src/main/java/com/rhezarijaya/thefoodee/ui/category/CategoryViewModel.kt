@@ -9,7 +9,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CategoryViewModel @Inject constructor(private val foodUseCase: IFoodUseCase) : ViewModel() {
-    fun getFilteredByCategory(category: String) = foodUseCase.getFilteredByCategory(category).asLiveData()
+    fun getFilteredByCategory(category: String) =
+        foodUseCase.getFilteredByCategory(category).asLiveData()
 
     fun addFavorite(food: Food) = foodUseCase.addFavorite(food)
 

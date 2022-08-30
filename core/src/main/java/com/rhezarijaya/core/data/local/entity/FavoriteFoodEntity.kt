@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "tbl_favorite_food")
-data class FavoriteFoodEntity (
+data class FavoriteFoodEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")

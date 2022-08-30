@@ -15,11 +15,14 @@ class FoodInteractor @Inject constructor(private val foodRepository: FoodReposit
 
     override fun getFavorites(): Flow<Resource<List<Food>>> = foodRepository.getFavorites()
 
-    override fun getFilteredByCategory(category: String): Flow<Resource<List<Food>>> = foodRepository.getFilteredByCategory(category)
+    override fun getFilteredByCategory(category: String): Flow<Resource<List<Food>>> =
+        foodRepository.getFilteredByCategory(category)
 
-    override fun getFoodDetail(foodId: String): Flow<Resource<Food>> = foodRepository.getFoodDetail(foodId)
+    override fun getFoodDetail(foodId: String): Flow<Resource<Food>> =
+        foodRepository.getFoodDetail(foodId)
 
     override fun removeFavorite(food: Food) = foodRepository.removeFavorite(food)
 
-    override fun searchFood(query: String): Flow<Resource<List<Food>>> = foodRepository.searchFood(query)
+    override fun searchFood(query: String): Flow<Resource<List<Food>>> =
+        foodRepository.searchFood(query)
 }

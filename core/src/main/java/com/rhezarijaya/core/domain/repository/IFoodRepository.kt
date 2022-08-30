@@ -17,6 +17,6 @@ interface IFoodRepository {
     fun getFoodDetail(foodId: String): Flow<Resource<Food>>
 
     fun removeFavorite(food: Food)
-    
+
     fun searchFood(query: String): Flow<Resource<List<Food>>>
 }

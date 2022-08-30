@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">The Foodee</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="categories">Categories</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favorite</string>
+    <string name="search_food">Search Food</string>
+    <string name="instructions">Instructions</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="category_format">Category : %s</string>
+    <string name="area_format">Area : %s</string>
+    <string name="no_item">No Item</string>
+</resources>

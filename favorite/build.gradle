@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.dynamic-feature'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+apply plugin: 'com.google.dagger.hilt.android'
+
+apply from: '../shared_dependencies.gradle'
+
+android {
+    compileSdk 32
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        minSdk 21
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(":app")
+    implementation project(":core")
+}

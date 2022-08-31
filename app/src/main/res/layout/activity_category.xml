@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/root_padding">
 
+            <!-- TODO boleh ditambah image description -->
             <ImageView
                 android:id="@+id/category_iv_thumbnail"
                 android:layout_width="match_parent"

@@ -16,6 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RemoteDataSourceModule {
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
+        // TODO check jika build debug atau release
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .build()

@@ -36,6 +36,7 @@ class CategoryActivity : AppCompatActivity() {
         intent.getParcelableExtra<Category>(Constants.INTENT_CATEGORY_LIST_TO_CATEGORY)?.let {
             categoryData = it
         } ?: run {
+            // TODO sebaiknya masukkan di strings.xml
             Toast.makeText(this, "Illegal Access", Toast.LENGTH_SHORT).show()
             finish()
         }

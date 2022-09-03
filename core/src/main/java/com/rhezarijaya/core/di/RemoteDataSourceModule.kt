@@ -1,11 +1,13 @@
 package com.rhezarijaya.core.di
 
+import com.rhezarijaya.core.BuildConfig
 import com.rhezarijaya.core.data.remote.network.APIService
 import com.rhezarijaya.core.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,10 +18,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RemoteDataSourceModule {
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
-        // TODO check jika build debug atau release
         return OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .build()
+            .addInterceptor(
+                HttpLoggingInterceptor().setLevel(
+                    if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+                )
+            )
+            .certificatePinner(
+                CertificatePinner.Builder()
+                    .add(Constants.API_HOSTNAME, Constants.API_CERT_PIN)
+                    .build()
+            ).build()
     }
 
     @Provides

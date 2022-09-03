@@ -15,12 +15,12 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/root_padding">
 
-            <!-- TODO boleh ditambah image description -->
             <ImageView
                 android:id="@+id/category_iv_thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="fitCenter"
+                android:contentDescription="@string/food_image"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/ic_baseline_restaurant_menu_24" />
 

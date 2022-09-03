@@ -14,6 +14,7 @@ import com.rhezarijaya.core.domain.model.Category
 import com.rhezarijaya.core.ui.OnItemClick
 import com.rhezarijaya.core.ui.adapter.ItemCategoryAdapter
 import com.rhezarijaya.core.utils.Constants
+import com.rhezarijaya.thefoodee.R
 import com.rhezarijaya.thefoodee.databinding.FragmentCategoryListBinding
 import com.rhezarijaya.thefoodee.ui.category.CategoryActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,17 +54,23 @@ class CategoryListFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
             }
 
-            viewModel.getCategories().observe(viewLifecycleOwner) {
+            viewModel.getCategories().observe(viewLifecycleOwner) { categoriesResource ->
                 binding.fragmentCategoryListProgressBar.visibility =
-                    if (it is Resource.Loading) View.VISIBLE else View.GONE
+                    if (categoriesResource is Resource.Loading) View.VISIBLE else View.GONE
 
-                if (it is Resource.Success) {
-                    itemCategoryAdapter.submitList(it.data)
+                if (categoriesResource is Resource.Success) {
+                    itemCategoryAdapter.submitList(categoriesResource.data)
                 }
 
-                if (it is Resource.Error) {
-                    Toast.makeText(requireContext(), "Error getting categories", Toast.LENGTH_SHORT)
-                        .show()
+                if (categoriesResource is Resource.Error) {
+                    Toast.makeText(
+                        requireContext(),
+                        String.format(
+                            getString(R.string.error_categories_list),
+                            categoriesResource.message
+                        ),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }

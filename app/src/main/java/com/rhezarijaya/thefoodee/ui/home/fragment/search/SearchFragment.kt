@@ -15,6 +15,7 @@ import com.rhezarijaya.core.domain.model.Food
 import com.rhezarijaya.core.ui.OnItemClick
 import com.rhezarijaya.core.ui.adapter.ItemFoodAdapter
 import com.rhezarijaya.core.utils.Constants
+import com.rhezarijaya.thefoodee.R
 import com.rhezarijaya.thefoodee.databinding.FragmentSearchBinding
 import com.rhezarijaya.thefoodee.ui.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -73,7 +74,7 @@ class SearchFragment : Fragment() {
                             } else {
                                 Toast.makeText(
                                     requireContext(),
-                                    "Please fill the search keyword",
+                                    getString(R.string.search_blank_info),
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -105,7 +106,7 @@ class SearchFragment : Fragment() {
                     binding.fragmentSearchTvNoItem.visibility = View.VISIBLE
                     Toast.makeText(
                         requireContext(),
-                        "Error getting search result",
+                        String.format(getString(R.string.error_search), foodResource.message),
                         Toast.LENGTH_SHORT
                     ).show()
                 }

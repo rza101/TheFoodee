@@ -8,6 +8,7 @@ import com.rhezarijaya.core.data.remote.response.CategoriesItem
 import com.rhezarijaya.core.domain.model.Category
 import com.rhezarijaya.core.domain.model.Food
 import com.rhezarijaya.core.domain.repository.IFoodRepository
+import com.rhezarijaya.core.utils.Constants
 import com.rhezarijaya.core.utils.DataMapper
 import com.rhezarijaya.core.utils.DatabaseExecutor
 import kotlinx.coroutines.flow.*
@@ -43,10 +44,15 @@ class FoodRepository @Inject constructor(
                     }
                 }
                 is APIResult.Empty -> {
-                    emit(Resource.Error("Data Error"))
+                    emit(Resource.Error(Constants.EMPTY_DATA))
                 }
                 is APIResult.Error -> {
-                    emit(Resource.Error((result.exception as HttpException).message()))
+                    try {
+                        emit(Resource.Error((result.exception as HttpException).message()))
+                    } catch (e: Exception) {
+                        // gagal cast ke HttpException
+                        emit(Resource.Error(result.exception.message ?: Constants.UNKNOWN_ERROR))
+                    }
                 }
             }
         }
@@ -92,10 +98,15 @@ class FoodRepository @Inject constructor(
                         }
                 }
                 is APIResult.Empty -> {
-                    emit(Resource.Error("Data Error"))
+                    emit(Resource.Error(Constants.EMPTY_DATA))
                 }
                 is APIResult.Error -> {
-                    emit(Resource.Error((result.exception as HttpException).message()))
+                    try {
+                        emit(Resource.Error((result.exception as HttpException).message()))
+                    } catch (e: Exception) {
+                        // gagal cast ke HttpException
+                        emit(Resource.Error(result.exception.message ?: Constants.UNKNOWN_ERROR))
+                    }
                 }
             }
         }
@@ -129,10 +140,15 @@ class FoodRepository @Inject constructor(
                         }
                 }
                 is APIResult.Empty -> {
-                    emit(Resource.Error("Data Error"))
+                    emit(Resource.Error(Constants.EMPTY_DATA))
                 }
                 is APIResult.Error -> {
-                    emit(Resource.Error((result.exception as HttpException).message()))
+                    try {
+                        emit(Resource.Error((result.exception as HttpException).message()))
+                    } catch (e: Exception) {
+                        // gagal cast ke HttpException
+                        emit(Resource.Error(result.exception.message ?: Constants.UNKNOWN_ERROR))
+                    }
                 }
             }
         }
@@ -170,10 +186,15 @@ class FoodRepository @Inject constructor(
                         }
                 }
                 is APIResult.Empty -> {
-                    emit(Resource.Error("Data Error"))
+                    emit(Resource.Error(Constants.EMPTY_DATA))
                 }
                 is APIResult.Error -> {
-                    emit(Resource.Error((result.exception as HttpException).message()))
+                    try {
+                        emit(Resource.Error((result.exception as HttpException).message()))
+                    } catch (e: Exception) {
+                        // gagal cast ke HttpException
+                        emit(Resource.Error(result.exception.message ?: Constants.UNKNOWN_ERROR))
+                    }
                 }
             }
         }

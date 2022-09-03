@@ -1,7 +1,9 @@
 package com.rhezarijaya.core.data.remote.response
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class CategoriesItem(
     @field:SerializedName("idCategory")
     val idCategory: String? = null,

@@ -10,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import net.sqlcipher.database.SupportFactory
 import javax.inject.Singleton
 
 @Module
@@ -22,7 +23,9 @@ class LocalDataSourceModule {
             context,
             FavoriteFoodDatabase::class.java,
             Constants.DATABASE_FILE_NAME
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(SupportFactory(Constants.DATABASE_CIPHER_PASSWORD.toByteArray()))
+            .build()
 
     @Provides
     fun provideFavoriteFoodDAO(database: FavoriteFoodDatabase): FavoriteFoodDAO =

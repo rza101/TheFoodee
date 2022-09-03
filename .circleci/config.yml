@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   android: circleci/android@1.0.3
+  codecov: codecov/codecov@1.0.2
 
 jobs:
   build:
@@ -30,6 +31,8 @@ jobs:
       - run:
           name: Run Tests
           command: ./gradlew lint test
+      - codecov/upload:
+          file: { { coverage_report_filepath } }
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:  

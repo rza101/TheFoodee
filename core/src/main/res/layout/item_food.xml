@@ -20,7 +20,8 @@
             android:scaleType="fitCenter"
             app:layout_constraintHeight_percent="0.5"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_baseline_star_24" />
+            tools:src="@drawable/ic_baseline_star_24"
+            android:contentDescription="@string/food_image" />
 
         <ImageView
             android:id="@+id/item_food_iv_favorite"
@@ -28,7 +29,8 @@
             android:layout_height="50dp"
             android:src="@drawable/ic_baseline_star_outline_24"
             app:layout_constraintEnd_toEndOf="@id/item_food_iv_thumbnail"
-            app:layout_constraintTop_toTopOf="@id/item_food_iv_thumbnail" />
+            app:layout_constraintTop_toTopOf="@id/item_food_iv_thumbnail"
+            android:contentDescription="@string/favorite" />
 
         <TextView
             android:id="@+id/item_food_tv_name"

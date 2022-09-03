@@ -55,7 +55,7 @@ class CategoryListFragment : Fragment() {
             }
 
             viewModel.getCategories().observe(viewLifecycleOwner) { categoriesResource ->
-                binding.fragmentCategoryListProgressBar.visibility =
+                binding.fragmentCategoryLottieLoading.visibility =
                     if (categoriesResource is Resource.Loading) View.VISIBLE else View.GONE
 
                 if (categoriesResource is Resource.Success) {

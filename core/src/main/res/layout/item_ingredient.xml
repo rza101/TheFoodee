@@ -19,7 +19,8 @@
             android:layout_height="100dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_baseline_dining_24" />
+            tools:src="@drawable/ic_baseline_dining_24"
+            android:contentDescription="@string/ingredients_photo" />
 
         <TextView
             android:id="@+id/item_ingredient_tv_name"

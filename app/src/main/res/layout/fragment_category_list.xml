@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingHorizontal="@dimen/root_padding"
     tools:context=".ui.home.fragment.categorylist.CategoryListFragment">
 
@@ -13,15 +13,18 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/item_category" />
 
-    <ProgressBar
-        android:id="@+id/fragment_category_list_progress_bar"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/fragment_category_lottie_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/orange"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true"
+        app:lottie_scale="2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

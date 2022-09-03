@@ -75,21 +75,22 @@ class CategoryActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.getFilteredByCategory(categoryData.strCategory ?: "").observe(this) { foodResource ->
-            binding.categoryProgressBar.visibility =
-                if (foodResource is Resource.Loading) View.VISIBLE else View.GONE
+        viewModel.getFilteredByCategory(categoryData.strCategory ?: "")
+            .observe(this) { foodResource ->
+                binding.categoryLottieLoading.visibility =
+                    if (foodResource is Resource.Loading) View.VISIBLE else View.GONE
 
-            if (foodResource is Resource.Success) {
-                itemFoodAdapter.submitList(foodResource.data)
-            }
+                if (foodResource is Resource.Success) {
+                    itemFoodAdapter.submitList(foodResource.data)
+                }
 
-            if (foodResource is Resource.Error) {
-                Toast.makeText(
-                    this,
-                    String.format(getString(R.string.error_category), foodResource.message),
-                    Toast.LENGTH_SHORT
-                ).show()
+                if (foodResource is Resource.Error) {
+                    Toast.makeText(
+                        this,
+                        String.format(getString(R.string.error_category), foodResource.message),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-        }
     }
 }

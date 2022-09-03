@@ -60,7 +60,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         viewModel.getFoodDetail(foodId).observe(this) { foodResource ->
-            binding.detailProgressBar.visibility =
+            binding.detailLottieLoading.visibility =
                 if (foodResource is Resource.Loading) View.VISIBLE else View.GONE
 
             if (foodResource is Resource.Success) {

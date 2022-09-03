@@ -6,15 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.splash.SplashActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/splash_civ_icon"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/splash_lottie_icon"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/app_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="food.json"
+        app:lottie_loop="false" />
 
     <TextView
         android:id="@+id/splash_tv_app_name"
@@ -25,8 +27,8 @@
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/splash_civ_icon"
-        app:layout_constraintStart_toStartOf="@id/splash_civ_icon"
-        app:layout_constraintTop_toBottomOf="@id/splash_civ_icon" />
+        app:layout_constraintEnd_toEndOf="@id/splash_lottie_icon"
+        app:layout_constraintStart_toStartOf="@id/splash_lottie_icon"
+        app:layout_constraintTop_toBottomOf="@id/splash_lottie_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

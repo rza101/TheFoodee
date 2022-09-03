@@ -13,10 +13,26 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/item_food" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/fragment_favorite_list_lottie_no_item"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/fragment_favorite_list_tv_no_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="sademptybox.json"
+        app:lottie_loop="true"
+        app:lottie_scale="1.5" />
+
     <TextView
-        android:id="@+id/fragment_favorite_tv_no_item"
+        android:id="@+id/fragment_favorite_list_tv_no_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/no_item"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -24,17 +40,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/fragment_favorite_list_lottie_no_item" />
 
-    <ProgressBar
-        android:id="@+id/fragment_favorite_list_progress_bar"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/fragment_favorite_list_lottie_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/orange"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true"
+        app:lottie_scale="2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -89,13 +89,16 @@ class SearchFragment : Fragment() {
 
             viewModel.getSearchData().observe(viewLifecycleOwner) { foodResource ->
                 if (foodResource is Resource.Loading) {
-                    binding.fragmentSearchProgressBar.visibility = View.VISIBLE
+                    binding.fragmentSearchLottieLoading.visibility = View.VISIBLE
+                    binding.fragmentSearchLottieNoItem.visibility = View.GONE
                     binding.fragmentSearchTvNoItem.visibility = View.GONE
                 } else {
-                    binding.fragmentSearchProgressBar.visibility = View.GONE
+                    binding.fragmentSearchLottieLoading.visibility = View.GONE
                 }
 
                 if (foodResource is Resource.Success) {
+                    binding.fragmentSearchLottieNoItem.visibility =
+                        if (foodResource.data?.isEmpty() == false) View.GONE else View.VISIBLE
                     binding.fragmentSearchTvNoItem.visibility =
                         if (foodResource.data?.isEmpty() == false) View.GONE else View.VISIBLE
 
@@ -103,6 +106,7 @@ class SearchFragment : Fragment() {
                 }
 
                 if (foodResource is Resource.Error) {
+                    binding.fragmentSearchLottieNoItem.visibility = View.VISIBLE
                     binding.fragmentSearchTvNoItem.visibility = View.VISIBLE
                     Toast.makeText(
                         requireContext(),

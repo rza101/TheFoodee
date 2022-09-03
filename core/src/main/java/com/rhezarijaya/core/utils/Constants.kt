@@ -16,7 +16,7 @@ object Constants {
     const val INTENT_ITEM_FOOD_TO_DETAIL = "INTENT_ITEM_FOOD_TO_DETAIL"
 
     // magic numbers
-    const val SPLASH_SCREEN_DELAY = 2500L
+    const val SPLASH_SCREEN_DELAY = 1000L
 
     // strings constant
     const val EMPTY_DATA = "Empty Data"

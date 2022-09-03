@@ -1,6 +1,7 @@
 package com.rhezarijaya.thefoodee.ui.splash
 
 import android.animation.Animator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -12,6 +13,7 @@ import com.rhezarijaya.thefoodee.ui.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

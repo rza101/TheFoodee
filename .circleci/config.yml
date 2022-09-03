@@ -12,7 +12,9 @@ jobs:
           key: android-orb-v1-
       - run:
           name: Chmod permissions
-          command: sudo chmod +x ./gradlew
+          command:
+            chmod +x gradlew
+            sudo chmod +x ./gradlew
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies

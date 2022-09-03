@@ -5,7 +5,6 @@ object Constants {
     const val API_BASE_URL = "https://www.themealdb.com/api/json/v1/"
     const val API_CERT_PIN = "sha256/AqbFBzf2Bf3yYCBuzzj4PRsg50jn50RA53sI/h26ylM="
     const val API_HOSTNAME = "www.themealdb.com"
-    const val API_KEY = "1"
 
     // database constants
     const val DATABASE_FILE_NAME = "thefoodee.db"

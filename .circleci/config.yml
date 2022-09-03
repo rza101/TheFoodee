@@ -4,7 +4,8 @@ orbs:
   android: circleci/android@1.0.3
 
 jobs:
-  executor: android/android
+  build:
+    executor: android/android
     steps:
       - checkout
       - restore_cache:

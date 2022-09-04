@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Download Dependencies
           command: |
-                    sudo chmod +x gradlew
+                    sudo chmod +x ./gradlew
                     ./gradlew androidDependencies
       - save_cache:
           key: 'android-orb-v1-{{ epoch }}'

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="food_category_image">Food Category Image</string>
+    <string name="food_image">Food Image</string>
+    <string name="favorite">Favorite</string>
+    <string name="ingredients_photo">Ingredients Photo</string>
+</resources>

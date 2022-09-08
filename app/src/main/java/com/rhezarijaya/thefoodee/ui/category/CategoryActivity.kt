@@ -36,8 +36,7 @@ class CategoryActivity : AppCompatActivity() {
         intent.getParcelableExtra<Category>(Constants.INTENT_CATEGORY_LIST_TO_CATEGORY)?.let {
             categoryData = it
         } ?: run {
-            // TODO sebaiknya masukkan di strings.xml
-            Toast.makeText(this, "Illegal Access", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.illegal_access), Toast.LENGTH_SHORT).show()
             finish()
         }
 
@@ -76,18 +75,22 @@ class CategoryActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.getFilteredByCategory(categoryData.strCategory ?: "").observe(this) {
-            binding.categoryProgressBar.visibility =
-                if (it is Resource.Loading) View.VISIBLE else View.GONE
+        viewModel.getFilteredByCategory(categoryData.strCategory ?: "")
+            .observe(this) { foodResource ->
+                binding.categoryLottieLoading.visibility =
+                    if (foodResource is Resource.Loading) View.VISIBLE else View.GONE
 
-            if (it is Resource.Success) {
-                itemFoodAdapter.submitList(it.data)
-            }
+                if (foodResource is Resource.Success) {
+                    itemFoodAdapter.submitList(foodResource.data)
+                }
 
-            if (it is Resource.Error) {
-                Toast.makeText(this, "Error getting foods data", Toast.LENGTH_SHORT)
-                    .show()
+                if (foodResource is Resource.Error) {
+                    Toast.makeText(
+                        this,
+                        String.format(getString(R.string.error_category), foodResource.message),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-        }
     }
 }

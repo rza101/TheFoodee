@@ -1,7 +1,9 @@
 package com.rhezarijaya.core.data.remote.response
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class FoodItem(
     @field:SerializedName("idMeal")
     val idMeal: String,

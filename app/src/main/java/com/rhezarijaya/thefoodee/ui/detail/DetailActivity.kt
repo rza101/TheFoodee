@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.rhezarijaya.core.data.Resource
@@ -32,7 +34,7 @@ class DetailActivity : AppCompatActivity() {
         intent.getStringExtra(Constants.INTENT_ITEM_FOOD_TO_DETAIL)?.let {
             foodId = it
         } ?: run {
-            Toast.makeText(this, "Illegal Access", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.illegal_access), Toast.LENGTH_SHORT).show()
             finish()
         }
 
@@ -58,7 +60,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         viewModel.getFoodDetail(foodId).observe(this) { foodResource ->
-            binding.detailProgressBar.visibility =
+            binding.detailLottieLoading.visibility =
                 if (foodResource is Resource.Loading) View.VISIBLE else View.GONE
 
             if (foodResource is Resource.Success) {
@@ -84,10 +86,13 @@ class DetailActivity : AppCompatActivity() {
 
                         Glide.with(this@DetailActivity)
                             .load(
-                                if (food.isOnFavorite)
-                                    com.rhezarijaya.core.R.drawable.ic_baseline_star_24
-                                else
-                                    com.rhezarijaya.core.R.drawable.ic_baseline_star_outline_24
+                                AppCompatResources.getDrawable(
+                                    this@DetailActivity,
+                                    if (food.isOnFavorite)
+                                        com.rhezarijaya.core.R.drawable.ic_baseline_star_24
+                                    else
+                                        com.rhezarijaya.core.R.drawable.ic_baseline_star_outline_24
+                                )?.toBitmap()
                             )
                             .into(detailIvFavorite)
 
@@ -105,8 +110,11 @@ class DetailActivity : AppCompatActivity() {
             }
 
             if (foodResource is Resource.Error) {
-                Toast.makeText(this, "Error getting data", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(
+                    this,
+                    String.format(getString(R.string.error_detail), foodResource.message),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

@@ -20,7 +20,8 @@
             android:scaleType="fitCenter"
             app:layout_constraintHeight_percent="0.5"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_baseline_star_24" />
+            tools:src="@drawable/ic_baseline_star_24"
+            android:contentDescription="@string/food_category_image" />
 
         <TextView
             android:id="@+id/item_category_tv_name"

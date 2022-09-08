@@ -3,6 +3,8 @@ package com.rhezarijaya.core.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -57,10 +59,13 @@ class ItemFoodAdapter(
 
             Glide.with(context)
                 .load(
-                    if (data.isOnFavorite)
-                        R.drawable.ic_baseline_star_24
-                    else
-                        R.drawable.ic_baseline_star_outline_24
+                    AppCompatResources.getDrawable(
+                        context,
+                        if (data.isOnFavorite)
+                            R.drawable.ic_baseline_star_24
+                        else
+                            R.drawable.ic_baseline_star_outline_24
+                    )?.toBitmap()
                 )
                 .into(itemFoodIvFavorite)
 

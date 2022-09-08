@@ -15,6 +15,7 @@ import com.rhezarijaya.core.domain.model.Food
 import com.rhezarijaya.core.ui.OnItemClick
 import com.rhezarijaya.core.ui.adapter.ItemFoodAdapter
 import com.rhezarijaya.core.utils.Constants
+import com.rhezarijaya.thefoodee.R
 import com.rhezarijaya.thefoodee.databinding.FragmentSearchBinding
 import com.rhezarijaya.thefoodee.ui.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -73,7 +74,7 @@ class SearchFragment : Fragment() {
                             } else {
                                 Toast.makeText(
                                     requireContext(),
-                                    "Please fill the search keyword",
+                                    getString(R.string.search_blank_info),
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -88,13 +89,16 @@ class SearchFragment : Fragment() {
 
             viewModel.getSearchData().observe(viewLifecycleOwner) { foodResource ->
                 if (foodResource is Resource.Loading) {
-                    binding.fragmentSearchProgressBar.visibility = View.VISIBLE
+                    binding.fragmentSearchLottieLoading.visibility = View.VISIBLE
+                    binding.fragmentSearchLottieNoItem.visibility = View.GONE
                     binding.fragmentSearchTvNoItem.visibility = View.GONE
                 } else {
-                    binding.fragmentSearchProgressBar.visibility = View.GONE
+                    binding.fragmentSearchLottieLoading.visibility = View.GONE
                 }
 
                 if (foodResource is Resource.Success) {
+                    binding.fragmentSearchLottieNoItem.visibility =
+                        if (foodResource.data?.isEmpty() == false) View.GONE else View.VISIBLE
                     binding.fragmentSearchTvNoItem.visibility =
                         if (foodResource.data?.isEmpty() == false) View.GONE else View.VISIBLE
 
@@ -102,10 +106,11 @@ class SearchFragment : Fragment() {
                 }
 
                 if (foodResource is Resource.Error) {
+                    binding.fragmentSearchLottieNoItem.visibility = View.VISIBLE
                     binding.fragmentSearchTvNoItem.visibility = View.VISIBLE
                     Toast.makeText(
                         requireContext(),
-                        "Error getting search result",
+                        String.format(getString(R.string.error_search), foodResource.message),
                         Toast.LENGTH_SHORT
                     ).show()
                 }

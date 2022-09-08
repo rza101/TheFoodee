@@ -24,28 +24,46 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_search_sv" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/fragment_search_lottie_no_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/fragment_search_tv_no_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/fragment_search_rv"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="emptysearch.json"
+        app:lottie_loop="true" />
+
     <TextView
         android:id="@+id/fragment_search_tv_no_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/no_item"
         android:textSize="25sp"
         android:textStyle="bold"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_search_rv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_search_lottie_no_item" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/fragment_search_lottie_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/fragment_search_progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/orange"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/fragment_search_rv"
-        app:layout_constraintEnd_toEndOf="@id/fragment_search_rv"
-        app:layout_constraintStart_toStartOf="@id/fragment_search_rv"
-        app:layout_constraintTop_toTopOf="@id/fragment_search_rv" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true"
+        app:lottie_scale="2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

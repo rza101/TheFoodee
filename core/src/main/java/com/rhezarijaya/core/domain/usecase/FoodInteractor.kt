@@ -1,13 +1,13 @@
 package com.rhezarijaya.core.domain.usecase
 
-import com.rhezarijaya.core.data.FoodRepository
 import com.rhezarijaya.core.data.Resource
 import com.rhezarijaya.core.domain.model.Category
 import com.rhezarijaya.core.domain.model.Food
+import com.rhezarijaya.core.domain.repository.IFoodRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class FoodInteractor @Inject constructor(private val foodRepository: FoodRepository) :
+class FoodInteractor @Inject constructor(private val foodRepository: IFoodRepository) :
     IFoodUseCase {
     override fun addFavorite(food: Food) = foodRepository.addFavorite(food)
 

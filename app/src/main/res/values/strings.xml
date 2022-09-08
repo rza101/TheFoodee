@@ -10,4 +10,11 @@
     <string name="category_format">Category : %s</string>
     <string name="area_format">Area : %s</string>
     <string name="no_item">No Item</string>
+    <string name="food_image">Food Image</string>
+    <string name="search_blank_info">Please fill the search keyword</string>
+    <string name="illegal_access">Illegal Access</string>
+    <string name="error_category">Error getting foods data : %s</string>
+    <string name="error_categories_list">Error getting categories : %s</string>
+    <string name="error_search">Error getting search result : %s</string>
+    <string name="error_detail">Error getting data : %s</string>
 </resources>

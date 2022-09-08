@@ -83,14 +83,17 @@ class FavoriteFragment : Fragment() {
 
             viewModel.getFavoriteList().observe(viewLifecycleOwner) { foodResource ->
                 if (foodResource is Resource.Loading) {
-                    binding.fragmentFavoriteListProgressBar.visibility = View.VISIBLE
-                    binding.fragmentFavoriteTvNoItem.visibility = View.GONE
+                    binding.fragmentFavoriteListLottieLoading.visibility = View.VISIBLE
+                    binding.fragmentFavoriteListLottieNoItem.visibility = View.GONE
+                    binding.fragmentFavoriteListTvNoItem.visibility = View.GONE
                 } else {
-                    binding.fragmentFavoriteListProgressBar.visibility = View.GONE
+                    binding.fragmentFavoriteListLottieLoading.visibility = View.GONE
                 }
 
                 if (foodResource is Resource.Success) {
-                    binding.fragmentFavoriteTvNoItem.visibility =
+                    binding.fragmentFavoriteListLottieNoItem.visibility =
+                        if (foodResource.data?.isEmpty() == false) View.GONE else View.VISIBLE
+                    binding.fragmentFavoriteListTvNoItem.visibility =
                         if (foodResource.data?.isEmpty() == false) View.GONE else View.VISIBLE
 
                     itemFoodAdapter.submitList(foodResource.data)
